@@ -19,6 +19,6 @@ To run this project, install it locally using npm:
 
 ```
 $ Clone this project
-$ cd ../assignmnet
+$ cd assignmnet
 $ npm install
 $ npm start

@@ -52,16 +52,15 @@ router.post("/", async (req, res) => {
   const token = book.generateAuthToken();
   res
     .header("x-auth-token", token)
-    .send(_.pick(book, ["_id", "name", "email"]));
+    .send(_.pick(book, ["_id", "firstName","lastName", "email","numberOfPeople","checkInDate","chekOutDate"]));
 });
 
 router.get("/me", async (req, res) => {
   console.log(req.query);
   const { email } = req.query;
-  const booked = await Booking.find({ email: email, isDeleted: true });
+  const booked = await Booking.find({ email: email, isDeleted: false });
 
-  if (booked.length > 0) {
-    res.send();
+  if (booked.length > 0) {   
     res.status(200).json({
       data: booked,
       message: "Successfully ",
